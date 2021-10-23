@@ -26,34 +26,35 @@ class _RootAppState extends State<RootApp> {
   }
 
   Widget getBody() {
-    return HomePage();
+    return const HomePage();
   }
 
   Widget getBottomNavBar() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
       child: Container(
           height: 68,
           decoration: BoxDecoration(
-              color: primaryColor, borderRadius: BorderRadius.circular(16)),
+              color: primaryColor.withOpacity(0.8),
+              borderRadius: BorderRadius.circular(16)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               IconButton(
-                icon: const Icon(
+                icon: Icon(
                   Icons.home,
                   size: 30,
-                  color: white,
+                  color: pageIndex == 0 ? white : white.withOpacity(0.4),
                 ),
                 onPressed: () {
                   setPageIndex(0);
                 },
               ),
               IconButton(
-                icon: const Icon(
+                icon: Icon(
                   Icons.shopping_cart,
                   size: 30,
-                  color: white,
+                  color: pageIndex == 1 ? white : white.withOpacity(0.4),
                 ),
                 onPressed: () {
                   setPageIndex(1);
@@ -61,10 +62,10 @@ class _RootAppState extends State<RootApp> {
               ),
               IconButton(
                 enableFeedback: true,
-                icon: const Icon(
+                icon: Icon(
                   Icons.favorite,
                   size: 30,
-                  color: white,
+                  color: pageIndex == 2 ? white : white.withOpacity(0.4),
                 ),
                 onPressed: () {
                   setPageIndex(2);
@@ -72,10 +73,10 @@ class _RootAppState extends State<RootApp> {
               ),
               IconButton(
                 enableFeedback: true,
-                icon: const Icon(
+                icon: Icon(
                   Icons.person,
                   size: 30,
-                  color: white,
+                  color: pageIndex == 3 ? white : white.withOpacity(0.4),
                 ),
                 onPressed: () {
                   setPageIndex(3);
