@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:real_estate/pages/home_page.dart';
+import 'package:real_estate/pages/search_page.dart';
 import 'package:real_estate/theme/colors.dart';
+import 'package:animations/animations.dart';
 
 class RootApp extends StatefulWidget {
   const RootApp({Key? key}) : super(key: key);
@@ -28,12 +30,22 @@ class _RootAppState extends State<RootApp> {
   Widget getBody() {
     List<Widget> pages = [
       HomePage(),
-      HomePage(),
+      SearchPage(),
       HomePage(),
       HomePage(),
     ];
 
-    return pages[pageIndex];
+    return PageTransitionSwitcher(
+      transitionBuilder: (child, primaryAnimation, secondaryAnimation) =>
+          FadeThroughTransition(
+        animation: primaryAnimation,
+        secondaryAnimation: secondaryAnimation,
+        child: child,
+      ),
+      child: pages[pageIndex],
+    );
+
+    // return pages[pageIndex];
   }
 
   Widget getBottomNavBar() {
@@ -70,7 +82,7 @@ class _RootAppState extends State<RootApp> {
               IconButton(
                 enableFeedback: true,
                 icon: Icon(
-                  Icons.favorite,
+                  pageIndex == 2 ? Icons.favorite : Icons.favorite_outline,
                   size: 30,
                   color: pageIndex == 2 ? white : white.withOpacity(0.4),
                 ),
