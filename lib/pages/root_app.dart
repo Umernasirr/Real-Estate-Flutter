@@ -26,7 +26,14 @@ class _RootAppState extends State<RootApp> {
   }
 
   Widget getBody() {
-    return const HomePage();
+    List<Widget> pages = [
+      HomePage(),
+      HomePage(),
+      HomePage(),
+      HomePage(),
+    ];
+
+    return pages[pageIndex];
   }
 
   Widget getBottomNavBar() {
